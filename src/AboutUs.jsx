@@ -1,5 +1,5 @@
 export default function () {
     return (
-        "Products Page"
+        "About Us Page"
     )
 }
