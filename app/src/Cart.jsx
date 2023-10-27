@@ -14,7 +14,7 @@ export default function Cart({ cart }) {
     event.preventDefault()
 
     const lineItems = cart.map((product) => {
-      return { price: product.price_id, quantity: product.quantity }
+      return { price: product.default_price, quantity: product.quantity }
     })
 
     stripeLoadedPromise.then((stripe) => {
