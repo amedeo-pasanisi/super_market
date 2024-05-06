@@ -1,24 +1,20 @@
-import { Link } from "react-router-dom";
-import Button from "./Button";
+import { Link } from "react-router-dom"
+import Button from "./Button"
 
-export default function Product(props) {
-  const { details } = props;
-
-  const productFromCart = props.cart.find(
-    (product) => product.id === details.id
-  );
-  const quantity = productFromCart ? productFromCart.quantity : 0;
+const Product = ({product, ...props}) => {
+  const productFromCart = props.cart.find((cartProduct) => product.id === cartProduct.id)
+  const quantity = productFromCart ? productFromCart.quantity : 0
 
   return (
     <div className="product">
       <div className="product-image-container">
-        <Link to={`/products/${details.id}`}>
+        <Link to={`/products/${product.id}`}>
           <img
-            src={details.image}
+            src={product.images[0]}
             width="100"
             height="100"
             className="product-image"
-            alt={details.name}
+            alt={product.name}
           />
         </Link>
         {quantity > 0 && (
@@ -28,25 +24,17 @@ export default function Product(props) {
         )}
       </div>
       <div className="product-info">
-        <h3>{details.name}</h3>
-        <p>{details.description}</p>
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
       </div>
       <div className="product-checkout">
         <div>
-          {quantity > 0 && (
-            <Button
-              outline
-              onClick={() => props.onProductDelete(details.id)}
-              className="product-delete"
-            >
-              x
-            </Button>
-          )}
+          {quantity > 0 && (<Button outline onClick={() => props.onProductDelete(product.id)} className="product-delete">x</Button>)}
         </div>
-        <Button outline onClick={() => props.onProductAdd(details)}>
-          ${details.price}
-        </Button>
+        <Button outline onClick={() => props.onProductAdd(product)}>{product.currency} {product.price}</Button>
       </div>
     </div>
-  );
+  )
 }
+
+export default Product

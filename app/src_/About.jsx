@@ -1,4 +1,4 @@
-export default function About() {
+const About = () => {
   return (
     <div className="about-layout">
       <div>
@@ -21,3 +21,5 @@ export default function About() {
     </div>
   );
 }
+
+export default About

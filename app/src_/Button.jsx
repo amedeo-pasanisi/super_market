@@ -1,7 +1,7 @@
-import clsx from "clsx";
+import clsx from "clsx"
 
-export default function Button(props) {
-  const { children, outline, className, ...rest } = props;
+const Button = (props) => {
+  const { children, outline, className, ...rest } = props
 
   const classNames = clsx(
     {
@@ -10,11 +10,13 @@ export default function Button(props) {
       "btn-outline": outline,
     },
     className
-  );
+  )
 
   return (
     <button className={classNames} {...rest}>
       {children}
     </button>
-  );
+  )
 }
+
+export default Button

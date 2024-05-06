@@ -1,9 +1,9 @@
-import clsx from "clsx";
+import clsx from "clsx"
 
-export default function Input(props) {
-  const { className, placeholder, required, type = "text", ...rest } = props;
+const Input = (props) => {
+  const { className, placeholder, required, type = "text", ...rest } = props
 
-  const classNames = clsx({ input: true }, className);
+  const classNames = clsx({ input: true }, className)
 
   return (
     <label className="label">
@@ -19,5 +19,7 @@ export default function Input(props) {
         />
       </div>
     </label>
-  );
+  )
 }
+
+export default Input

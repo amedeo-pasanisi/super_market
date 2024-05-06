@@ -282,14 +282,15 @@ input:focus {
   grid-template-columns: 1fr auto;
   place-items: center;
   grid-gap: 20px;
-  padding-top: 40px;
+  padding: 40px 0 40px 0;
 }
 
 .about-layout {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 20px;
-  padding-top: 40px;
+  justify-items: center;
+  padding: 40px 0 40px 0;
 }
 
 .products-layout {
@@ -304,11 +305,18 @@ input:focus {
   grid-gap: 40px;
 }
 
+.cart-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Products */
 .products-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 25px;
+  justify-content: center
 }
 
 .product {
@@ -445,7 +453,7 @@ input:focus {
 }
 
 .pay-form {
-  padding-top: 30px;
+  padding: 40px 0;
 }
 
 @media (max-width: 700px) {

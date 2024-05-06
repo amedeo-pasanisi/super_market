@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="home-layout">
       <div>
@@ -21,5 +21,7 @@ export default function Home() {
         alt=""
       />
     </div>
-  );
+  )
 }
+
+export default Home

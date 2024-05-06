@@ -1,10 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
-export default function Navbar(props) {
-  const cartCount = props.cart.reduce(
-    (total, product) => total + product.quantity,
-    0
-  );
+const Navbar = (props) => {
+  const cartCount = props.cart.reduce((total, product) => total + product.quantity, 0)
 
   return (
     <nav className="navbar">
@@ -43,5 +40,7 @@ export default function Navbar(props) {
         </li>
       </ul>
     </nav>
-  );
+  )
 }
+
+export default Navbar
