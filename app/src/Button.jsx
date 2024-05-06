@@ -1,6 +1,6 @@
 import clsx from "clsx"
 
-export default function Button(props) {
+const Button = (props) => {
   const { children, outline, className, ...rest } = props
 
   const classNames = clsx(
@@ -18,3 +18,5 @@ export default function Button(props) {
     </button>
   )
 }
+
+export default Button

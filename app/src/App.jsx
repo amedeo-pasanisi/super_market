@@ -10,8 +10,8 @@ import ProductDetailNutrition from "./ProductDetailNutrition"
 import ProductDetailStorage from "./ProductDetailStorage"
 import Cart from "./Cart"
 
-function App() {
-  const [cart, setCart] = useState(function () {
+const App = () => {
+  const [cart, setCart] = useState(() => {
     let savedCart = []
     try {
       savedCart = JSON.parse(localStorage.getItem("cart")) || []
@@ -25,12 +25,12 @@ function App() {
     if (cart) localStorage.setItem("cart", JSON.stringify(cart))
   }, [cart])
 
-  function handleProductDelete(id) {
+  const handleProductDelete = (id) => {
     const updatedCart = cart.filter((product) => product.id !== id)
     setCart(updatedCart)
   }
 
-  function handleProductAdd(newProduct) {
+  const handleProductAdd = (newProduct) => {
     const existingProduct = cart.find((product) => product.id === newProduct.id)
     if (existingProduct) {
       const updatedCart = cart.map((product) => {

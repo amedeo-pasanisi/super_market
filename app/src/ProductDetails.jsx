@@ -3,7 +3,7 @@ import { NavLink, useParams, Outlet } from "react-router-dom"
 import useFetch from "./useFetch"
 import Loader from "./Loader"
 
-export default function ProductDetails() {
+const ProductDetails = () => {
   const [product, setProduct] = useState({})
   const {get, loading} = useFetch("https://stripe-server-opal.vercel.app/")
   const params = useParams()
@@ -50,3 +50,5 @@ export default function ProductDetails() {
     </div>
   )
 }
+
+export default ProductDetails

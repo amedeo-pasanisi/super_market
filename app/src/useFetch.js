@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-export default function useFetch(baseUrl) {
+const useFetch = (baseUrl) => {
   const [loading, setLoading] = useState(true)
 
-  function get(url) {
+  const get = (url) => {
     return new Promise((resolve, reject) => {
       fetch(baseUrl + url)
         .then((response) => response.json())
@@ -22,7 +22,7 @@ export default function useFetch(baseUrl) {
     })
   }
 
-  function post(url, body) {
+  const post = (url, body) => {
     return new Promise((resolve, reject) => {
       fetch(baseUrl + url, {
         ...{
@@ -51,3 +51,5 @@ export default function useFetch(baseUrl) {
 
   return { get, post, loading }
 }
+
+export default useFetch

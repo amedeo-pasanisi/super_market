@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom"
 
-export default function ProductDetailStorage() {
+const ProductDetailStorage = () => {
   const storage = useOutletContext().storage
   
   return (
@@ -9,3 +9,5 @@ export default function ProductDetailStorage() {
     </p>
   )
 }
+
+export default ProductDetailStorage

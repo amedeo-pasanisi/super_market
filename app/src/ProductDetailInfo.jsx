@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom"
 import Button from "./Button"
 
-export default function ProductDetailInfo({ onProductAdd }) {
+const ProductDetailInfo = ({ onProductAdd }) => {
   const product = useOutletContext()
 
   return (
@@ -14,3 +14,5 @@ export default function ProductDetailInfo({ onProductAdd }) {
     </>
   )
 }
+
+export default ProductDetailInfo

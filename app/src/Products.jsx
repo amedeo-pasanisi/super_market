@@ -3,7 +3,7 @@ import Product from "./Product"
 import useFetch from "./useFetch"
 import Loader from "./Loader"
 
-export default function Products({cart, onProductAdd, onProductDelete, ...props}) {
+const Products = ({cart, onProductAdd, onProductDelete}) => {
   const [products, setProducts] = useState([])
   const { get, loading } = useFetch("https://stripe-server-opal.vercel.app/")
 
@@ -34,3 +34,5 @@ export default function Products({cart, onProductAdd, onProductDelete, ...props}
     </div>
   )
 }
+
+export default Products

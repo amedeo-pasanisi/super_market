@@ -1,6 +1,6 @@
 import clsx from "clsx"
 
-export default function Input(props) {
+const Input = (props) => {
   const { className, placeholder, required, type = "text", ...rest } = props
 
   const classNames = clsx({ input: true }, className)
@@ -21,3 +21,5 @@ export default function Input(props) {
     </label>
   )
 }
+
+export default Input

@@ -5,11 +5,11 @@ import Button from "./Button"
 
 const stripeLoadedPromise = loadStripe("pk_test_51LC4KNCO80cQwQQ59GI91jcPVwOt1Ccu4VyCSmPnHFhloE9o7fRsV13gKzSGWuingZsUxhW56gpsdkNNeETLIfDu00WJBrWT4p")
 
-export default function Cart({ cart }) {
+const Cart = ({ cart }) => {
   const [email, setEmail] = useState("")
   const totalPrice = cart.reduce((total, cartProduct) => total + cartProduct.price * cartProduct.quantity, 0)
   
-  function handleFormSubmit(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault()
     const lineItems = cart.map((cartProduct) => {
       return { price: cartProduct.default_price, quantity: cartProduct.quantity }
@@ -85,3 +85,5 @@ export default function Cart({ cart }) {
     </div>
   )
 }
+
+export default Cart

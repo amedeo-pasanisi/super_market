@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Button from "./Button"
 
-export default function Product({product, ...props}) {
+const Product = ({product, ...props}) => {
   const productFromCart = props.cart.find((cartProduct) => product.id === cartProduct.id)
   const quantity = productFromCart ? productFromCart.quantity : 0
 
@@ -36,3 +36,5 @@ export default function Product({product, ...props}) {
     </div>
   )
 }
+
+export default Product
