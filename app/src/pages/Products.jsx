@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import useFetch from "../useFetch"
 
-const Products = ({cart, onAddCartProduct, onDeleteCartProduct}) => {
+const Products = ({cartProducts, onAddCartProduct, onDeleteCartProduct}) => {
     const [products, setProducts] = useState([])
     const { get, loading } = useFetch("https://stripe-server-opal.vercel.app/")
 
@@ -18,8 +19,8 @@ const Products = ({cart, onAddCartProduct, onDeleteCartProduct}) => {
             <p>...</p> :
             <ul>
                 {products.map(product => <li key={product.id}>
-                        <span>{(cart.find(cartProduct => product.id === cartProduct.id)?.quantity) || 0}</span>&nbsp;
-                        <span>{product.name}</span>&nbsp;
+                        <span>{(cartProducts.find(cartProduct => product.id === cartProduct.id)?.quantity) || 0}</span>&nbsp;
+                        <Link to={`/products/${product.id}`}>{product.name}</Link>&nbsp;
                         <button onClick={() => onAddCartProduct(product)}>{product.currency} {product.price}</button>&nbsp;
                         <button onClick={() => onDeleteCartProduct(product)}>X</button>
                     </li>

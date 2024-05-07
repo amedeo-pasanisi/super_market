@@ -1,9 +1,9 @@
-const Cart = ({cart}) => {
-    const totalPrice = cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
+const Cart = ({cartProducts}) => {
+    const totalPrice = cartProducts.reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
 
     return <>
         <h1>Your Cart</h1>
-        {cart.length ?
+        {cartProducts.length ?
             <table>
                 <thead>
                     <tr>
@@ -14,7 +14,7 @@ const Cart = ({cart}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {cart.map(cartProduct => <tr key={cartProduct.id}>
+                    {cartProducts.map(cartProduct => <tr key={cartProduct.id}>
                             <td>{cartProduct.name}</td>
                             <td>{cartProduct.currency} {cartProduct.price}</td>
                             <td>{cartProduct.quantity}</td>
@@ -25,7 +25,7 @@ const Cart = ({cart}) => {
                 <tfoot>
                     <tr>
                         <th>Total</th>
-                        <th>{cart[0].currency} {totalPrice}</th>
+                        <th>{cartProducts[0].currency} {totalPrice}</th>
                     </tr>
                 </tfoot>
             </table>
