@@ -1,6 +1,9 @@
+import { useMemo } from "react"
 import {NavLink} from "react-router-dom"
 
 const Navbar = ({cart}) => {
+    const cartQuantity = useMemo(() => cart.reduce((acc, cur) => acc + cur.quantity, 0), [cart])
+    
     return (
         <nav>
             <ul>
@@ -15,7 +18,7 @@ const Navbar = ({cart}) => {
                 </li>
                 <li>
                     <NavLink to="/cart" style={({isActive}) => ({textDecoration: isActive ? 'underline' : 'none'})}>
-                        Cart ({cart})
+                        Cart ({cartQuantity})
                     </NavLink>
                 </li>
             </ul>

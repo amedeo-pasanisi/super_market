@@ -1,4 +1,4 @@
-import reactImg from "./assets/about.jpg"
+import reactImg from "../assets/about.jpg"
 
 const AboutUs = () => {
     return <>
