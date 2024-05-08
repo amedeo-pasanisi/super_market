@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
@@ -11,18 +11,29 @@ import ProductDetailNutrition from "./pages/productDetails/ProductDetailNutritio
 import ProductDetailStorage from "./pages/productDetails/ProductDetailStorage";
 
 const App = () => {
-    const [cartProducts, setCartProducts] = useState([])
+    const [cartProducts, setCartProducts] = useState(() => {
+        let savedCart = []
+        try {
+            savedCart = JSON.parse(localStorage.getItem("cart")) || []
+        } catch (error) {
+            savedCart = []
+        }
+        return savedCart
+    })
+    useMemo(() => {
+        if (cartProducts) localStorage.setItem("cart", JSON.stringify(cartProducts))
+    }, [cartProducts])
 
     const handleAddCartProduct = addedProduct => {
         const alreadyInCart = cartProducts.find(cartProduct => cartProduct.id === addedProduct.id )
-        if (!alreadyInCart) {
-            setCartProducts(prevState => [...prevState, {...addedProduct, quantity: 1}])
-        } else {
+        if (alreadyInCart) {
             const updatedCartProducts = cartProducts.map(cartProduct => {
                 if (cartProduct.id === alreadyInCart.id) return {...cartProduct, quantity: alreadyInCart.quantity + 1}
                 return cartProduct
             })
             setCartProducts(updatedCartProducts)
+        } else {
+            setCartProducts(prevState => [...prevState, {...addedProduct, quantity: 1}])
         }
     }
 
